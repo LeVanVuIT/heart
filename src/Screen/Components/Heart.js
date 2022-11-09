@@ -55,7 +55,7 @@ const Image = styled.div`
     transform: translate(-50%, -50%);
     background-size: contain;
     background-image: url(/static/image/heart.jpeg)
-    border-radius: 25px;
+    // border-radius: 25px;
 `
 const ImageWrap = styled.div`
     width: 100%;
@@ -116,24 +116,23 @@ const HeartScreen = () =>{
                 </LottieWrap01>
             </div>
             :
-               <ShowVideo/> 
+                isShow ? <div>
+                    <ImageWrap>
+                        <Image />
+                    </ImageWrap>
+                    <LottieWrap02>
+                        <Lottie
+                            options={{
+                                loop: true,
+                                autoplay: true,
+                                animationData: json01
+                            }}
+                            width='300px'
+                            height='300px'
+                        />
+                    </LottieWrap02>
+                </div> : <ShowVideo/> 
             }
-            {isShow && <div>
-                <ImageWrap>
-                    <Image />
-                </ImageWrap>
-                <LottieWrap02>
-                    <Lottie
-                        options={{
-                            loop: true,
-                            autoplay: true,
-                            animationData: json01
-                        }}
-                        width='300px'
-                        height='300px'
-                    />
-                </LottieWrap02>
-            </div>}
         </Container>
     )
 }
