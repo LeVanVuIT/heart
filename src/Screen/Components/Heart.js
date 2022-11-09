@@ -6,6 +6,7 @@ import Lottie from 'react-lottie'
 import json01 from '../../config/json/animation01.json'
 import json02 from '../../config/json/animation02.json'
 import json03 from '../../config/json/animation03.json'
+import json04 from '../../config/json/animation04.json'
 
 const Container = styled.div`
 `
@@ -54,18 +55,26 @@ const Image = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     background-size: contain;
-    background-image: url(/static/image/heart.jpeg)
+    background-image: url(/static/image/my-love.jpg)
     // border-radius: 25px;
 `
 const ImageWrap = styled.div`
     width: 100%;
     height: 200px;
+    border-radius: 10px;
     @media screen and (max-width: 768px) {
       height: 200px;
     }
     border-radius: 50%;
 `
 const LottieWrap01 = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`
+const Step1Wrap = styled.div`
+
 `
 const LottieWrap02 = styled.div`
     position: absolute;
@@ -73,12 +82,22 @@ const LottieWrap02 = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
 `
+const LottieWrapLeft = styled.div`
+ position: absolute;
+top: 50%;
+left: 0;
+`
+const LottieWrapRight = styled.div`
+ position: absolute;
+top: 50%;
+right: 0;
+`
 const HeartScreen = () =>{
     const [isShow, setIsShow] = useState(false)
     const [step, setStep] = useState(1)
     const ShowVideo = () =>{
         return(
-            <div>
+            <LottieWrap02>
                 <Lottie
                     options={{
                         loop: false,
@@ -93,13 +112,13 @@ const HeartScreen = () =>{
                         callback: () => setIsShow(true)
                     }]}
                 />
-            </div>
+            </LottieWrap02>
         )
     }
     return(
         <Container className="wrapper">
             {step === 1? 
-                <div onClick={() => setStep(2)}>
+                <Step1Wrap onClick={() => setStep(2)}>
                 <Action >
                     xxx
                 </Action>
@@ -114,7 +133,7 @@ const HeartScreen = () =>{
                         height='300px'
                     />
                 </LottieWrap01>
-            </div>
+            </Step1Wrap>
             :
                 isShow ? <div>
                     <ImageWrap>
@@ -131,6 +150,28 @@ const HeartScreen = () =>{
                             height='300px'
                         />
                     </LottieWrap02>
+                    <LottieWrapLeft>
+                        <Lottie
+                            options={{
+                                loop: true,
+                                autoplay: true,
+                                animationData: json04
+                            }}
+                            width='150px'
+                            height='150px'
+                        />
+                    </LottieWrapLeft>
+                    <LottieWrapRight>
+                        <Lottie
+                            options={{
+                                loop: true,
+                                autoplay: true,
+                                animationData: json04
+                            }}
+                            width='150px'
+                            height='150px'
+                        />
+                    </LottieWrapRight>
                 </div> : <ShowVideo/> 
             }
         </Container>
