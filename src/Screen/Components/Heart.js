@@ -137,7 +137,7 @@ const HeartScreen = () =>{
             {step === 1? 
                 <Step1Wrap onClick={() => setStep(2)}>
                 <Action >
-                    xxx
+                    Hi! My love.
                 </Action>
                 <LottieWrap01>
                     <Lottie
