@@ -4,6 +4,7 @@ import { Button } from 'antd'
 import {images} from '../../config/images'
 import Lottie from 'react-lottie'
 import json01 from '../../config/json/animation01.json'
+import json02 from '../../config/json/animation02.json'
 
 const Container = styled.div`
 `
@@ -47,32 +48,68 @@ const Image = styled.div`
     animation: ${AnimationImg} 900ms ease-in 10ms;
     width: 200px;
     height: 200px;
-    position: relative; 
-    margin: 0 auto;
-    // top: -240px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-size: contain;
     background-image: url(/static/image/heart.jpeg)
 `
 const ImageWrap = styled.div`
     width: 100%;
-    height: 300px;
+    height: 200px;
     @media screen and (max-width: 768px) {
-      height: 300px;
+      height: 200px;
     }
+    border-radius: 50%;
+`
+const LottieWrap01 = styled.div`
+`
+const LottieWrap02 = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 `
 const HeartScreen = () =>{
     const [isShow, setIsShow] = useState(false)
-    const Lottie = ()=>{
-
-    } 
     return(
         <Container className="wrapper">
-            {!isShow ? <Action onClick={() => setIsShow(true)}>
-                xxx
-            </Action> :
-             <ImageWrap>
-                <Image/>
-            </ImageWrap>}
+            {!isShow ? 
+                <div onClick={() => setIsShow(true)}>
+                <Action >
+                    xxx
+                </Action>
+                <LottieWrap01>
+                    <Lottie
+                        options={{
+                            loop: true,
+                            autoplay: true,
+                            animationData: json02
+                        }}
+                        width='300px'
+                        height='300px'
+                    />
+                </LottieWrap01>
+            </div>
+            :
+            <div>
+                <ImageWrap>
+                    <Image />
+                </ImageWrap>
+                <LottieWrap02>
+                    <Lottie
+                        options={{
+                            loop: true,
+                            autoplay: true,
+                            animationData: json01
+                        }}
+                        width='300px'
+                        height='300px'
+                    />
+                </LottieWrap02>
+            </div>
+            }
         </Container>
     )
 }
