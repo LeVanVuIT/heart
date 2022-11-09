@@ -5,6 +5,7 @@ import {images} from '../../config/images'
 import Lottie from 'react-lottie'
 import json01 from '../../config/json/animation01.json'
 import json02 from '../../config/json/animation02.json'
+import json03 from '../../config/json/animation03.json'
 
 const Container = styled.div`
 `
@@ -54,6 +55,7 @@ const Image = styled.div`
     transform: translate(-50%, -50%);
     background-size: contain;
     background-image: url(/static/image/heart.jpeg)
+    border-radius: 25px;
 `
 const ImageWrap = styled.div`
     width: 100%;
@@ -73,10 +75,31 @@ const LottieWrap02 = styled.div`
 `
 const HeartScreen = () =>{
     const [isShow, setIsShow] = useState(false)
+    const [step, setStep] = useState(1)
+    const ShowVideo = () =>{
+        return(
+            <div>
+                <Lottie
+                    options={{
+                        loop: false,
+                        autoplay: true,
+                        animationData: json03
+                    }}
+                    width='300px'
+                    height='300px'
+                    eventListeners={[
+                    {
+                        eventName: 'complete',
+                        callback: () => setIsShow(true)
+                    }]}
+                />
+            </div>
+        )
+    }
     return(
         <Container className="wrapper">
-            {!isShow ? 
-                <div onClick={() => setIsShow(true)}>
+            {step === 1? 
+                <div onClick={() => setStep(2)}>
                 <Action >
                     xxx
                 </Action>
@@ -93,7 +116,9 @@ const HeartScreen = () =>{
                 </LottieWrap01>
             </div>
             :
-            <div>
+               <ShowVideo/> 
+            }
+            {isShow && <div>
                 <ImageWrap>
                     <Image />
                 </ImageWrap>
@@ -108,8 +133,7 @@ const HeartScreen = () =>{
                         height='300px'
                     />
                 </LottieWrap02>
-            </div>
-            }
+            </div>}
         </Container>
     )
 }
