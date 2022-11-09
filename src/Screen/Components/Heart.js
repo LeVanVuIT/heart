@@ -28,26 +28,41 @@ const Action = styled(Button)`
 `
 const AnimationImg = keyframes`
   0% {
-        transform: scale(0.1, 0.1);
+     position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: scale(0.1, 0.1) translate(-50%, -50%);
     }
     25% {
-        transform: scale(0.3, 0.3);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: scale(0.3, 0.3) translate(-50%, -50%);
     }
 
     50% {
-        transform: scale(0.6, 0.6);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: scale(0.6, 0.6) translate(-50%, -50%);
     }
 
     75% {
-        transform: scale(0.9, 0.9);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: scale(0.9, 0.9) translate(-50%, -50%);
     }
 
     100% {
-        transform: scale(1.2, 1.2);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: scale(1.2, 1.2) translate(-50%, -50%);
     }
 `
 const Image = styled.div`
-    animation: ${AnimationImg} 900ms ease-in 10ms;
+    animation: ${AnimationImg} 1200ms ease-in 0ms;
     width: 200px;
     height: 200px;
     position: absolute;
@@ -56,16 +71,18 @@ const Image = styled.div`
     transform: translate(-50%, -50%);
     background-size: contain;
     background-image: url(/static/image/my-love.jpg)
-    // border-radius: 25px;
 `
 const ImageWrap = styled.div`
-    width: 100%;
+    width: 200px;
     height: 200px;
-    border-radius: 10px;
+    border-radius: 25px;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
     @media screen and (max-width: 768px) {
       height: 200px;
     }
-    border-radius: 50%;
 `
 const LottieWrap01 = styled.div`
     position: absolute;
